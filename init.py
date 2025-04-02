@@ -1,15 +1,12 @@
 import numpy as np
 
-def init_params(layer_dims):
-    np.random.seed(3)
+def init_params(layer_len):
     params = {}
-    L = len(layer_dims)
-
-    for l in range(1, L):
-        params['W'+str(l)] = np.random.randn(layer_dims[l], layer_dims[l-1])
-        params['b'+str(l)] = np.zeros((layer_dims[l], 1))
-    
-    return params
+    for i in range(1, layer_len):
+        params["W" + str(i)] = np.random.randn(layer_len[i],layer_len[i-1]) * 0.01
+        params["b" + str(i)] = np.zeros(layer_len[i],1)
+    z = np.zeros((layer_len[-1],1))
+    return params, 
 
 def activation_function(type, Z):
     if type == "sigmoid":
@@ -25,3 +22,11 @@ def activation_function(type, Z):
         return np.log(1 + np.exp(Z))
     else:
         raise ValueError("Unsupported activation function type: {}".format(type))
+
+class Layer ():
+    def __init__(self, layer_len, activation_type, ):
+        self.layer_len = layer_len
+        self.activation_type = activation_type
+        self.params, self.z = init_params(layer_len)
+
+    
