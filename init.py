@@ -24,9 +24,13 @@ def activation_function(type, Z):
         raise ValueError("Unsupported activation function type: {}".format(type))
 
 class Layer ():
-    def __init__(self, layer_len, activation_type, ):
+    def __init__(self, layer_len, activation_type):
         self.layer_len = layer_len
         self.activation_type = activation_type
         self.params, self.z = init_params(layer_len)
 
-    
+    def calculateOutputs(self):
+        self.z = np.dot
+        self.z = activation_function(self.activation_type, self.z)
+
+        return self.z
